@@ -1,0 +1,72 @@
+.hf_popup--bd_and_grab--container {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 25px;
+    max-width: 330px;
+    width: 330px;
+    max-height: 109px;
+    height: 109px;
+    background-color: #FFD600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out 2s;
+    visibility: hidden;
+}
+
+.hf_popup-text_container {
+    text-align: center;
+    font-family: 'GoboldUplow', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: initial;
+}
+
+.hf_popup-text_container a {
+    text-decoration: none;
+}
+
+.hf_popup-text_container h3 {
+    color: #000000;
+    font-weight: normal;
+}
+
+.hf_popup-close {
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.hf_popup-close_btn {
+    width: 20px;
+    height: 2px;
+    background-color: transparent;
+}
+
+.hf_popup-close_btn::before,
+.hf_popup-close_btn::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background-color: #ffd600;
+}
+
+.hf_popup-close_btn::after {
+    transform: rotate(45deg);
+}
+
+.hf_popup-close_btn::before {
+    transform: rotate(135deg);
+}
