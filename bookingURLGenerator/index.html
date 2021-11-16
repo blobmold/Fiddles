@@ -1,0 +1,68 @@
+<main style="margin-top: 400px;">
+    <section>
+
+        <!-- BOOKING FORM WIDGET -->
+        <form action="" class="rh-booking-widget">
+            <div class="rh-bw-container">
+                <select placeholder="Where To?" id="location">
+                    <!-- Default value -->
+                    <option value="Where To?" disabled selected>Where To?</option> 
+                    <option value="Tbilisi">Tbilisi</option> 
+                    <option value="Kazbegi">Kazbegi</option> 
+                    <option value="Kokhta">Kokhta</option>
+                </select>
+            </div>
+            <div class="rh-bw-container">
+                <input type="date" id="start" min="" placeholder="Arrival">
+            </div>
+            <div class="rh-bw-container">
+                <input type="date" id="end" min="" placeholder="Arrival">
+            </div>
+            <div class="rh-bw-container">
+                <select placeholder="Guests" id="guests">
+                    <option value="0" disabled>Guests</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2" selected>2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5">5 Guests</option>
+                    <option value="6">6 Guests</option>
+                    <option value="7">7 Guests</option>
+                    <option value="8">8 Guests</option>
+                    <option value="9">9 Guests</option>
+                    <option value="10">10 Guests</option>
+                </select>
+            </div>
+
+            <input type="submit" id="submit" name="submit" class="" value="Submit" target="_blank">
+        </form>
+        <!-- END OF BOKOING FORM WIDGET -->
+
+
+    </section>
+
+    <section>
+        <div class="return"></div>
+        <div class="returnedURL">
+            <a href="" target="_blank"></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="rh-footer-container">
+        <?php 
+        //Footer Menu
+        wp_nav_menu(
+            [
+                'container_class'   => 'rh-footer_menu-container',
+                'menu_class'        => 'rh-footer_menu-list',
+                'theme_location'    => 'footer',
+            ]
+        ); 
+        ?>
+
+
+    </div>
+
+</footer>
