@@ -1,0 +1,1133 @@
+/*
+ Theme Name:   RH v2 Child
+ Theme URI:    https://macron125.github.io
+ Description:  Rooms Hotels Child Theme. Along with the RHCPT plugin <strong>1.</strong> fixes URL structure, adjusts admin bar visibility; <strong>2.</strong> styles google maps iframe and potential css theme conflict; <strong>3.</strong> fixes the way list of rooms along with its background images are displayed; <strong>4.</strong> newsletter section is now responsive; <strong>5.</strong> Added Book Directly custom page styles; <strong>6.</strong> Added Special Offers Archive and Special Offers custom page styles;
+ Author:       George Paresishvili
+ Author URI:   https://macron125.github.io
+ Template:     roomshotelsv2
+ Version:      1.3.1.0.5.409299
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  roomshotelsv2-child
+*/
+
+/* Cookies */
+.header__bottom_privacy,
+.header__bottom_covid {
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+}
+.header__bottom_privacy.visible,
+.header__bottom_covid.visible {
+  visibility: visible;
+  opacity: 1;
+}
+/* End of Cookies */
+
+/* Popup Black Friday */
+.rh-bf {
+  z-index: 99999999;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.rh-bf.visible {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+.rh-bf a,
+.rh-bf p,
+.rh-bf h1 {
+  color: white;
+}
+
+.rh-bf-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.707);
+}
+
+.rh-bf-popup {
+  position: absolute;
+  width: 657px;
+  height: 611px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
+
+.rh-bf.visible .rh-bf-popup {
+  transition: all 0.5s ease;
+  transform: scale(1);
+}
+
+.rh-bf-closeBtn_container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.rh-bf-closeBtn {
+  height: 0.5px;
+  width: 30px;
+  background-color: transparent;
+}
+
+.rh-bf-closeBtn::before,
+.rh-bf-closeBtn::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 1px;
+  background-color: white;
+}
+
+.rh-bf-closeBtn::after {
+  transform: rotate(45deg);
+}
+
+.rh-bf-closeBtn::before {
+  transform: rotate(135deg);
+}
+
+.rh-bf-text_cont,
+.rh-bf-btn {
+  text-align: center;
+}
+
+.rh-bf-text_cont h1 {
+  font-size: 72px;
+}
+
+.rh-bf-text_cont p {
+  padding-top: 6px;
+  font-size: 48px;
+  font-family: "Caslon";
+}
+
+.rh-bf-btn {
+  position: absolute;
+  bottom: 50px;
+}
+
+.rh-bf-btn a {
+  border-width: 0.5px !important;
+  font-family: "Caslon";
+  font-weight: normal;
+  font-size: 24px;
+}
+
+@media screen and (max-height: 600px) {
+  .rh-bf-popup {
+    width: 420px;
+    height: 420px;
+  }
+
+  .rh-bf-btn a {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  .rh-bf-text_cont h1 {
+    font-size: 2em;
+  }
+  .rh-bf-text_cont p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .rh-bf-popup {
+    width: 420px;
+    height: 420px;
+  }
+
+  .rh-bf-btn a {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  .rh-bf-text_cont h1 {
+    font-size: 2em;
+  }
+  .rh-bf-text_cont p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 455px) {
+  .rh-bf-popup {
+    width: 310px;
+    height: 310px;
+  }
+  .rh-bf-btn a {
+    padding: 7px 12px;
+  }
+}
+
+/* End of Popup Black Friday */
+
+/* adjusted header visibility */
+.logged-in body,
+.logged-in header {
+  margin-top: 32px;
+}
+/* end of adjusted header visibility */
+
+/* Google Maps */
+.acf-map {
+  width: 100%;
+  height: 500px;
+  margin: 20px 0;
+}
+
+/* Fixes potential theme css conflict. */
+.acf-map img {
+  max-width: inherit !important;
+}
+/* End of Google Maps */
+
+/* Fix rooms list */
+@media (max-width: 767px) {
+  .module-list {
+    height: auto !important;
+  }
+}
+/* End fix rooms list */
+
+/* Fix rooms list background */
+.c-image-slider__pictures > div {
+  background-size: cover !important;
+}
+/* End fix rooms list background */
+
+/*Responsive Newsletter Section*/
+.newsletter__form {
+  height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .newsletter__form {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .newsletter__form {
+    height: 240px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .newsletter__form {
+    height: 260px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .newsletter__form {
+    height: 400px;
+  }
+}
+/*END of Responsive Newsletter Section*/
+
+/*Fixing responsive horizontal navigation bar*/
+.header__top__submenu li:first-child {
+  display: none !important;
+}
+/*end Fixing responsive horizontal navigation bar*/
+
+.module-menu__nav > li:first-child {
+  margin-top: 40px;
+}
+
+.module-menu__nav .nav-subitem:first-child {
+  display: inline-block;
+}
+.module-menu__nav .nav-subitem:nth-child(2) {
+  display: inline-block;
+}
+.module-menu__nav .nav-subitem:nth-child(3) {
+  display: inline-block;
+}
+
+.gn-parent:first-child {
+  margin-top: 40px;
+}
+
+@media (max-width: 767px) {
+  .gn-parent {
+    margin-top: 40px;
+    /*border-bottom: 0.5px solid white;*/
+  }
+}
+
+.nav-subitem-parent {
+  opacity: 0;
+  max-height: 0;
+  transition: 0.2s ease-out;
+}
+
+.gn-parent:hover .nav-subitem-parent {
+  opacity: 1;
+  max-height: 200px;
+}
+
+/*Book Directly*/
+
+/*Book Directly Header*/
+.bd-section-header {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.bd-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bd-background-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bd-header-h-container {
+  position: absolute;
+}
+
+.bd-title {
+  font-size: 50px;
+}
+
+.bd-subtitle {
+  font-family: "Caslon";
+  font-size: 30px;
+  font-style: italic;
+  margin-bottom: 13px;
+}
+
+.bd-section-header .bd-button {
+  position: absolute;
+  bottom: 120px;
+  border: 0.5px solid white;
+  z-index: 1;
+}
+
+.cta {
+  width: initial !important;
+}
+
+.cta.bd-button::after {
+  z-index: -1;
+}
+
+/* SPLIT CONTAINER */
+
+.bd-section-split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 750px) {
+  .bd-section-split-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bd-text .bd-title {
+    margin-top: 30px;
+  }
+}
+
+.bd-section-split-container:last-child {
+  margin: 0;
+}
+
+/* SPLIT text container */
+
+.bd-text {
+  margin: 100px 90px;
+}
+
+@media screen and (max-width: 940px) {
+  .bd-text {
+    margin: 100px 20px 0 20px;
+  }
+  .bd-text:last-child {
+    margin: 0 20px 50px 20px;
+  }
+}
+
+.bd-text .bd-title {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.bd-list li {
+  border-top: 0.5px solid black;
+  padding: 10px 0;
+}
+.bd-list li:last-child {
+  border-bottom: 0.5px solid black;
+}
+
+.bd-text .bd-button {
+  margin-top: 30px;
+  border: 0.5px solid black;
+}
+
+/* SPLIT image container */
+
+.bd-image {
+  height: 70vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bd-image .bd-background,
+.bd-image .bd-background-overlay,
+.bd-image .bd-title-container,
+.bd-image .bd-content,
+.bd-image .bd-button {
+  position: absolute;
+  color: white;
+}
+
+.bd-image .bd-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bd-image .cta.bd-button {
+  border: 0.5px solid white;
+  z-index: 1;
+  bottom: 20px;
+}
+
+/*Book Directly (BD) heading*/
+
+.bd-heading h1 {
+  font-size: 50px;
+}
+
+@media (max-width: 767px) {
+  .bd-section-split-container .cta.bd-button,
+  .bd-section-header .cta.bd-button {
+    width: auto;
+  }
+}
+
+/* Special Offers*/
+
+.so-section-header {
+  margin-top: 60px;
+  padding: 50px;
+}
+
+.so-section-header h1 {
+  font-size: 70px;
+}
+
+.so-section-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 600px;
+  grid-gap: 12px;
+  padding: 10px;
+  max-width: 1920px;
+  margin: 0 auto;
+  justify-self: center;
+}
+
+.so-card {
+  position: relative;
+}
+
+.so-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.so-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.337);
+}
+
+.so-card-content {
+  position: absolute;
+  color: white;
+  padding: 50px 30% 50px 50px;
+}
+
+.so-card-content h6 {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.so-card button {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}
+
+@media (max-width: 767px) {
+  .so-section-cards .cta {
+    width: auto;
+  }
+}
+
+.so-more {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.so-more h3 {
+  margin-bottom: 60px;
+}
+
+/* Special Offers Archive */
+
+.slick-slide {
+  margin: 0 10px;
+}
+
+.slick-list {
+  padding: 0 30px 0 0 !important;
+}
+
+.slick-list:last-child {
+  padding: 0 !important;
+}
+
+.so-archive-slider {
+  margin-bottom: 50px;
+}
+
+.so-archive-slider article {
+  height: 600px;
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.so-archive-slider button {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 767px) {
+  .so-archive-slider .cta {
+    width: auto;
+  }
+}
+
+/* Special Offers - Responsive */
+
+@media screen and (max-width: 800px) {
+  .so-section-cards {
+    grid-template-columns: 1fr;
+  }
+  .so-card-content {
+    padding: 50px 20% 50px 50px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .so-section-cards {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 414px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .so-section-cards {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 455px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .so-section-cards {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 455px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .so-section-cards {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 455px;
+  }
+}
+
+/*fixing the color and background for booking widget for each room */
+.module-booking-single_room input[name="arrival"],
+.module-booking-single_room input[name="departure"],
+.module-booking-single_room span[id="guests-button"] {
+  backdrop-filter: unset !important;
+  color: black !important;
+  background: rgba(216, 216, 216, 0.3) !important;
+}
+
+.module--100h {
+  min-height: 660px !important;
+}
+
+/* 0.0.0 ROOT */
+
+:root {
+  --rh-header-bg: #000000;
+  --rh-sub-menu-bg: #ff0000;
+  --rh-header-height: 60px;
+  --rh-header-sub-nav-height: 60px;
+  --rh-header-font-size: 16px;
+}
+
+/* 1.0.0 Reset */
+
+div,
+span,
+p,
+a {
+  text-decoration: none;
+}
+
+/* disabling the browser default appearance for input and select */
+input,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
+::-webkit-datetime-edit,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+/* adjusted header visibility */
+body.admin-bar .rh-gn {
+  margin-top: 28px;
+}
+/* end of adjusted header visibility */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3.0.0 Reusable classes */
+/* GN CTA (Global Nav Call To Action) Button - red stripe on hover */
+.gn-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  z-index: 1;
+  line-height: 1;
+}
+
+.gn-cta::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: rgb(255, 0, 0);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.gn-cta:hover::after {
+  width: 100%;
+}
+
+.rh-gn-header .sub-menu .gn-cta::after {
+  background-color: var(--rh-header-bg);
+}
+
+/* 4.0.0 Header */
+
+/* 4.1.0 Global Navigation */
+
+.rh-gn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  transition-delay: 0.5s;
+  z-index: 99999;
+}
+
+.rh-gn.open {
+  height: 100%;
+  transition-delay: 0s;
+}
+
+.rh-gn a {
+  color: white;
+}
+
+/* 4.1.1 Global Navigation Header */
+
+.rh-gn-header {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  height: var(--rh-header-height);
+  background: var(--rh-header-bg);
+  margin: auto; /*centering menu items*/
+}
+
+.rh-gn-header > li {
+  flex: 1;
+}
+
+/* 4.1.1.1 GN Logo */
+
+.rh-gn-logo {
+  flex: 1;
+  margin-left: 20px;
+}
+.rh-gn-logo img {
+  height: auto;
+  width: 200px;
+}
+
+/* 4.1.1.2 GN Main Menu */
+
+.rh-gn-container {
+  height: 48px;
+}
+
+.rh-gn-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 400px;
+  max-width: 400px;
+
+  /* center the text */
+  margin: auto;
+
+  /* Text styling */
+  font-family: "Caslon";
+  font-size: var(--rh-header-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.125em;
+
+  z-index: 9999;
+}
+
+@media screen and (max-width: 760px) {
+  .rh-gn-list {
+    display: none;
+  }
+}
+
+.rh-gn-list li {
+  list-style: none;
+}
+
+/* while hamburger menu is active, disable main menu */
+.rh-gn.open .rh-gn-list a {
+  display: none;
+}
+
+/* Sub Menu */
+
+.rh-gn-header .sub-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: var(--rh-header-sub-nav-height);
+  width: 100%;
+  background-color: var(--rh-sub-menu-bg);
+  z-index: -1;
+  /* delay every time you hover */
+  transition: all 0.5s ease-in-out 0.3s;
+  transform: translateY(-100%);
+  padding: 0 80px;
+
+  /* Calculate the margin from parent anchor */
+  margin-top: calc((var(--rh-header-height) - var(--rh-header-font-size)) / 2);
+}
+
+.rh-gn-header .sub-menu li {
+  line-height: normal;
+  padding: 0 20px;
+}
+
+.rh-gn-header .rh-gn-list li:hover .sub-menu {
+  transform: translateY(0);
+  /* delay remains only after you take your cursor away from li */
+  transition: all 0.5s ease-in-out;
+}
+
+/* 4.1.1.3 GN hamburger */
+
+.rh-gn-burger {
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.rh-burger_btn {
+  width: 30px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.rh-gn.open .rh-burger_btn {
+  background-color: transparent;
+}
+
+.rh-burger_btn::after,
+.rh-burger_btn::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.rh-burger_btn::after {
+  transform: translateY(7px);
+}
+
+.rh-burger_btn::before {
+  transform: translateY(-7px);
+}
+
+.rh-gn.open .rh-burger_btn::after {
+  transform: rotate(45deg);
+}
+
+.rh-gn.open .rh-burger_btn::before {
+  transform: rotate(-45deg);
+}
+
+/* 4.1.2 Global Navigation hamburger list */
+
+.rh-hamburger-container {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  visibility: hidden;
+  height: 100%;
+  width: 50%;
+  background-color: black;
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 760px) {
+  .rh-hamburger-container {
+    width: 100%;
+  }
+}
+
+.rh-gn.open .rh-hamburger-container {
+  visibility: visible;
+  height: 100%;
+  transform: translateX(0);
+}
+
+.rh-hamburger-container a{
+  font-family: 'separat regular';
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rh-hamburger-wrapper {
+  padding: 50px 0;
+}
+
+.rh-hamburger {
+  font-family: "separat";
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rh-hamburger li {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  padding: 10px;
+  margin-top: 15px;
+  letter-spacing: 0.125em;
+
+}
+
+.rh-hamburger .sub-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  max-height: 0; /* Height can not be animated from 0 to auto, thus max-height is used*/
+  transition: all 0.2s ease-in-out;
+}
+
+/* .rh-hamburger li:hover .sub-menu {
+  transition: all 0.2s ease-in-out;
+  max-height: 200px;
+} */
+
+.rh-hamburger li .sub-menu.active {
+  transition: all 0.2s ease-in-out;
+  max-height: 200px;
+}
+
+.rh-hamburger .sub-menu a {
+  font-size: 15px;
+}
+
+/* 4.3.0 Ribbons" */
+.header__bottom_privacy,
+.header__bottom_covid {
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+}
+.header__bottom_privacy.visible,
+.header__bottom_covid.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.header__bottom_position {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 999999999999999999;
+}
+.header__bottom_privacy {
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  line-height: 60px;
+  pointer-events: auto;
+  padding: 15px 0;
+  transition: all 0.5s ease-in-out;
+}
+.privacy_close_btn {
+  background: #fff;
+  color: #000;
+  border-radius: 1px;
+  position: absolute;
+  right: 15px;
+  content: " ";
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 4px 15px 0px;
+  line-height: 26px;
+  font-weight: normal !important;
+  text-decoration: none !important;
+  top: 15px;
+}
+.header__bottom_privacy p {
+  font-size: 16px;
+  font-family: "Caslon";
+  line-height: 30px;
+}
+.header__bottom_privacy a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.header__bottom_covid {
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  text-align: center;
+  background-color: #ededed;
+  color: #000;
+  font-size: 16px;
+  padding: 0;
+  pointer-events: auto;
+  transition: all 0.5s ease-in-out;
+}
+.covid_close_btn {
+  position: absolute;
+  right: 25px;
+  top: 22px;
+  width: 18px;
+  height: 18px;
+  /* opacity: 0.3; */
+}
+.covid_close_btn:before {
+  transform: rotate(45deg);
+}
+.covid_close_btn:before,
+.covid_close_btn:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 18px;
+  width: 2px;
+  background-color: #000;
+}
+.header__bottom_covid p {
+  font-size: 16px;
+  line-height: 66px;
+  font-family: "Caslon";
+}
+/* 5.0.0 Main */
+
+main {
+  margin-top: 48px;
+  background-color: red;
+}
+
+/* 5.1.0 Page Hero */
+
+/* 5.1.1 Booking Form */
+
+.rh-booking-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.rh-booking-widget select,
+.rh-booking-widget input,
+.rh-booking-widget {
+  /* Padding works because default appearance has been disabled */
+  /* See 1.0.0 Reset*/
+  padding: 20px;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+}
+
+.rh-bw-container:not(:last-child) {
+  margin-right: 2px;
+}
+
+.rh-bw-conatiner select {
+  background-color: rgba(255, 255, 255, 0.467);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+/* 5.2.0  */
+/* 6.0.0 Footer */
