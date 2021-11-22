@@ -4,18 +4,10 @@ class DefineCookie {
     this.closeBtn = document.querySelector(closeBtn);
   }
 
-  launch(name, value, options = {}) {
-    console.log(this.checkCookie(name));
-    if (!this.checkCookie(name)) {
-      this.openPopup();
-    }
-    this.closePopup(name, value, options);
-  }
-
   setCookie(name, value, options = {}) {
     options = {
       //Default values listed here
-      path: "/",
+      // path: "/",
       ...options,
     };
     if (options.expires instanceof Date) {
@@ -42,24 +34,73 @@ class DefineCookie {
 
     return list.get(search) ? true : false;
   }
+}
 
-  openPopup() {
-    this.cont.style.display = "flex";
+class PopupFunctions extends DefineCookie {
+  constructor(...args) {
+    super(...args);
+  }
+  launch(name, value, options = {}) {
+    window.addEventListener("DOMContentLoaded", (e) => {
+      if (!this.checkCookie(name)) {
+        this.openPopup(this.cont);
+      }
+      this.closePopup(name, value, options);
+    });
+  }
+  
+  openPopup(cont) {
+    cont.classList.add("visible");
   }
 
   closePopup(name, value, options = {}) {
     this.closeBtn.addEventListener("click", () => {
-      this.cont.style.display = "none";
+      this.cont.classList.remove("visible");
       this.setCookie(name, value, options);
-      console.log(this.checkCookie(name));
     });
   }
 }
 
-let defineCookie = new DefineCookie(".rh-bf", ".rh-bf-closeBtn_container");
+let cookieArr = [
+  {
+    optName: "Black Friday",
+    parentElement: ".rh-bf",
+    closeBtnContainer: ".rh-bf-closeBtn_container",
+    cookieName: "rh_bf-C",
+    cookieValue: "bf_set",
+    cookieOptions: {
+      secure: true,
+      expires: new Date(Date.now() + 259200e3).toUTCString(),
+    },
+  },
+  {
+    optName: "Privacy Policy",
+    parentElement: ".header__bottom_privacy",
+    closeBtnContainer: ".privacy_close_btn",
+    cookieName: "privacy_cookie",
+    cookieValue: "set",
+    cookieOptions: {
+      secure: true,
+      expires: new Date(Date.now() + 2592000e3).toUTCString(),
+      path: "/",
+    },
+  },
+  {
+    optName: "Covid 19",
+    parentElement: ".header__bottom_covid",
+    closeBtnContainer: ".covid_close_btn",
+    cookieName: "covid_cookie",
+    cookieValue: "set",
+    cookieOptions: {
+      secure: true,
+      expires: new Date(Date.now() + 2592000e3).toUTCString(),
+      path: "/",
+    },
+  },
+];
 
-let rhDate = new Date(Date.now() + 259200e3);
-
-//rhdate records the date when user visits the page,
-//adds a week to it and adds to expiery date parameter of that cookie.
-defineCookie.launch("rh_bf-C", "bf_set", { secure: true, expires: rhDate.toUTCString() });
+for (let obj of cookieArr) {
+  let cMap = new Map(Object.entries(obj));
+  let defineCookie = new PopupFunctions(cMap.get("parentElement"), cMap.get("closeBtnContainer"));
+  defineCookie.launch(cMap.get("cookieName"), cMap.get("cookieValue"), cMap.get("cookieOptions"));
+}
